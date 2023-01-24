@@ -1,0 +1,41 @@
+CREATE PROCEDURE [dbo].[InvertValue] (@Id INT, @Column CHAR(1))
+AS
+BEGIN
+
+SELECT * FROM TEST
+--UPDATE TEST
+--SET @Column = (CASE @Column
+--WHEN 'A' THEN ~ISNULL(A,A)
+--WHEN 'B' THEN ~ISNULL(B,B)
+--WHEN 'C' THEN ~ISNULL(C,C)
+--WHEN 'D' THEN ~ISNULL(D,D)
+--WHEN 'E' THEN ~ISNULL(E,E)
+--END)
+--WHERE Id = @Id
+--END
+
+IF @Column = 'A'
+begin
+	update TEST set A = ~ISNULL(A,A) WHERE Id =@Id
+end
+else if @Column = 'B'
+begin
+	update TEST set B = ~ISNULL(B,B) WHERE Id =@Id
+end
+else if @Column = 'C'
+begin
+	update TEST set C = ~ISNULL(C,C) WHERE Id =@Id
+end
+else if @Column = 'D'
+BEGIN
+	update TEST set D = ~ISNULL(D,D) WHERE Id =@Id
+END
+else if @Column = 'E'
+BEGIN
+	update TEST set E = ~ISNULL(E,E) WHERE Id =@Id
+END
+
+
+END
+
+SELECT * FROM TEST
